@@ -28,7 +28,6 @@ enum class Server( // FINISHME: This is horrible. Why have I done this?
     @JvmField val whisper: Cmd = Cmd("/w", -1), // FINISHME: This system still sucks despite my best efforts at making it good
     private val rtv: Cmd = Cmd("/rtv", -1),
     @JvmField val freeze: Cmd = Cmd("/freeze", -1),
-    @JvmField val ghost: Boolean = false,
     private val votekickString: String = "Type[orange] /vote <y/n>[] to agree."
 ) {
     other(null),
@@ -58,7 +57,6 @@ enum class Server( // FINISHME: This is horrible. Why have I done this?
         override fun adminui() = ClientVars.rank >= 5
     },
     phoenix("Phoenix Network", MapVote(), Cmd("/w"), Cmd("/rtv"), Cmd("/freeze", 9), votekickString = "Type [cyan]/vote y"),
-    korea("Korea", ghost = true),
     fish("Fish", null, Cmd("/msg")),
     darkdustry("Darkdustry")
     ;
