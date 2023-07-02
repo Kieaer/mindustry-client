@@ -76,7 +76,7 @@ object Main : ApplicationListener {
         Events.on(EventType.ServerJoinEvent::class.java) {
             setPluginNetworking(false)
             CommandCompletion.reset(true)
-            if (!Server.current.ghost) Call.serverPacketReliable("fooCheck", "") // Request version info FINISHME: The server should just send this info on join
+            Call.serverPacketReliable("fooCheck", "") // Request version info FINISHME: The server should just send this info on join
         }
 
         /** @since v1 Checks for the presence of the foo plugin on the server */
@@ -281,7 +281,6 @@ object Main : ApplicationListener {
     fun floatEmbed(): Vec2 {
         val show = Core.settings.getBool("displayasuser")
         return when {
-            Server.current.ghost -> Tmp.v1.set(Vars.player.unit().aimX, Vars.player.unit().aimY)
             Navigation.currentlyFollowing is AssistPath && show ->
                 Tmp.v1.set(
                     FloatEmbed.embedInFloat(Vars.player.unit().aimX, ClientVars.FOO_USER),
