@@ -112,17 +112,7 @@ public class NetClient implements ApplicationListener{
             c.uuid = platform.getUUID();
 
             var address = packet.addressTCP.split("[:/]")[1]; // Remove leading slash (and domain) and trailing port
-            if (ui.join.communityHosts.contains(h -> "Korea".equals(h.group) && h.address.equals(address))) { // Korea is cursed
-                var matcher = Pattern.compile("^\\[(.*)]").matcher(player.name);
-                if (matcher.find()) {
-                    var col = matcher.toMatchResult().group(1);
-                    var get = Colors.get(col);
-                    c.name = matcher.replaceAll("");
-                    try {
-                        c.color = get != null ? get.rgba() : Color.valueOf(col).rgba();
-                    } catch (IndexOutOfBoundsException ignored) {}
-                }
-            } else if (ui.join.communityHosts.contains(h -> "Chaotic Neutral".equals(h.group) && h.address.equals(address))) {
+            if (ui.join.communityHosts.contains(h -> "Chaotic Neutral".equals(h.group) && h.address.equals(address))) {
                 if (!Structs.contains(playerColors, col -> col.rgba() == c.color)) c.color = playerColors[0].rgba();
             }
 
