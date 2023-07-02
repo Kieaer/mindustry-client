@@ -7,7 +7,7 @@ object InvisibleCharCoder {
 
     private fun unMap(inp: Char) = (inp - 0x1000).code.toByte()
 
-    fun encode(bytes: ByteArray): String = if (Server.current.ghost) "" else String(CharArray(bytes.size) { i -> mapToChar(bytes[i]) })
+    fun encode(bytes: ByteArray): String = String(CharArray(bytes.size) { i -> mapToChar(bytes[i]) })
 
     fun decode(inp: String): ByteArray = ByteArray(inp.length) { i -> unMap(inp[i]) }
 
